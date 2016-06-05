@@ -8,7 +8,7 @@ var QuizController = function($scope){
  
   "use strict";
   $scope.currentPage = 0;
-  $scope.pageSize = 5;
+  $scope.pageSize = 2;
   $scope.questions = [
     {"id":0,"questionText": "Why is the sky blue?", "answers": [
       {"answerText":"blah blah 1", "correct": false},
