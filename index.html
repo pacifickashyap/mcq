@@ -1,0 +1,50 @@
+<!doctype html>
+<html ng-app="quiz" >
+<head>
+  <meta charset="utf-8">
+  <title>Quiz Engine</title>
+  <link href="http://twitter.github.com/bootstrap/assets/css/bootstrap.css" rel="stylesheet" /> 
+  <link rel="stylesheet" href="style.css">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script src="https://raw.github.com/twitter/bootstrap/master/docs/assets/js/bootstrap.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.0.2/angular.js"></script>
+  <script src="questions.js"></script>
+  <script src="app.js"></script>
+</head>
+<body>
+  <div ng-controller="QuizController">
+    <ul class="unstyled">
+      <li ng-repeat="question in questionstemp" id="box">
+       <strong class="question">{{ question.questionText }}</strong>
+       <ul class="unstyled" id="quest_{{question.id.$index}}"">
+        <li ng-repeat="answer in question.answers">
+          <label class="isCorrect_{{answer.selected}}" for="quest_{{question.id}}_answer_{{$index}}">
+            <input type="radio" id="quest_{{question.id}}_answer_{{$index}}" 
+            ng-model="answers[question.id]" value="{{ answer.answerText }}"  name="quest_{{question.id}}_answers" />{{ answer.answerText }}</label>
+        </li>
+       </ul>
+	   <ul class ="solution" style="display:{{showresflag}}">
+		<strong class="question">Solution:<br>{{ question.solution }}</strong>
+	   </ul>
+      </li>
+    </ul>
+    <button class="btn" type="submit" ng:click="showResult()">Submit</button>
+  <div class="well">
+    <p>you got {{ correctCount }} out of {{questions.length}} right</p>
+    
+  </div>
+  <button ng-disabled="currentPage == 0" ng:click="doprev()">
+        Previous
+    </button>
+    {{currentPage+1}}/{{numberOfPages()}}
+    <button ng-disabled="currentPage >= questions.length/pageSize - 1" ng:click="donext()">
+        Next
+    </button>
+    
+  </div>
+  
+ </body>
+</html>
+
+
+                

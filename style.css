@@ -1,0 +1,24 @@
+/* Put your css in here */
+
+
+.isCorrect_true{
+  background-color: green;
+}
+
+.isCorrect_false{
+  background-color: red;
+}
+
+#box {
+    border-radius: 25px;
+    border: 2px solid #73AD21;
+    padding: 20px; 
+    margin-bottom: 10px;
+}
+ul,li{
+list-style-type: none;
+}
+#solution
+{
+	display:none;
+}
